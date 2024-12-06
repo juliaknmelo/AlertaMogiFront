@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import Postagem from "../../../models/Postagem";
 import { AuthContext } from "../../../context/AuthContext";
 import { FaLocationDot } from "react-icons/fa6";
+import INUNDACAO from "../../../assets/INUNDACAO.jpg";
+import ALAGAMENTO from "../../../assets/ALAGAMENTO.jpg";
+import QUEIMADA from "../../../assets/QUEIMADA.jpg";
 
 interface CardPostagemProps {
   post: Postagem;
@@ -13,7 +16,14 @@ function CardPostagem({ post }: CardPostagemProps) {
   const { usuario } = useContext(AuthContext);
 
   let cardComponent;
-  const url: string = `./assets/${post.tag}.jpg`;
+  const url: string =
+    post.tag === "INUNDACAO"
+      ? INUNDACAO
+      : post.tag === "ALAGAMENTO"
+      ? ALAGAMENTO
+      : post.tag === "QUEIMADA"
+      ? QUEIMADA
+      : "";
   const colorBg =
     post.tag === "INUNDACAO"
       ? "#04357E"
@@ -90,8 +100,7 @@ function CardPostagem({ post }: CardPostagemProps) {
           </div>
         </div>
         {/* Apacere só logado */}
-        <div className={`flex text-left text-txt-white`}
-         style={styleBgColor}>
+        <div className={`flex text-left text-txt-white`} style={styleBgColor}>
           <Link
             to={`/editarPostagem/${post.id}`}
             className=" pl-4 text-white bg-indigo-400 hover:bg-indigo-800 flex 
