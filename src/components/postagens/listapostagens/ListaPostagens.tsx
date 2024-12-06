@@ -4,7 +4,7 @@ import { DNA } from "react-loader-spinner";
 // import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../../context/AuthContext";
 import Postagem from "../../../models/Postagem";
-import { buscar } from "../../../services/Service";
+import { buscar, buscar2 } from "../../../services/Service";
 import CardPostagem from "../cardpostagens/CardPostagens";
 import { toastAlerta } from "../../../utils/toastAlerta";
 
@@ -26,7 +26,7 @@ function ListaPostagens() {
 
   async function buscarPostagens() {
     try {
-      await buscar("/postagens", setPostagens);
+      await buscar2("/postagens", setPostagens);
     } catch (error: any) {
       if (error.toString().includes("403")) {
         toastAlerta("O token expirou, favor logar novamente", "info");
