@@ -13,7 +13,7 @@ function CardPostagem({ post }: CardPostagemProps) {
   const { usuario } = useContext(AuthContext);
 
   let cardComponent;
-  const url: string = `./src/assets/${post.tag}.jpg`;
+  const url: string = `./assets/${post.tag}.jpg`;
   const colorBg =
     post.tag === "INUNDACAO"
       ? "#04357E"
